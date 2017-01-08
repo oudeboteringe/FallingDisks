@@ -4,46 +4,44 @@
 
 #include "stdafx.h"
 
+#include <algorithm>
+using namespace std;
+
 #include "Solution.h"
 
-bool Contains(vector<int> &vect, int num)
-{
-  size_t vectSize = vect.size();
-  bool contains = false;
-  bool continueSearch = true;
-  int iVect = 0;
-  while (continueSearch && (iVect < vectSize))
-  {
-    if (vect.at(iVect) == num)
-    {
-      contains = true;
-      continueSearch = false;
+int DiskFits(vector<int> &A, int bot, int diam) {
+
+  int newBot = bot;
+  bool falls = true;
+  int depth = 0;
+  while (falls) {
+    if ((diam <= A.at(depth)) && (depth < bot)) {
+      depth++;
     }
-    else
-    {
-      iVect++;
+    else {
+      falls = false;
     }
   }
-  return contains;
+  newBot = std::min(bot, (depth-1));
+  return newBot;
 }
 
-int solution(vector<int> &A) {
+
+int solution(vector<int> &A, vector<int> &B) {
   // write your code in C++14 (g++ 6.2.0)
 
-  int p = 0;
-  vector<int> inA;
-  size_t sizeA = A.size();
-  for (int iA = 0; iA < sizeA; iA++)
+  int nDisks = 0;
+  int iDisk = 0;
+  size_t newBottom = A.size()-1;
+  while (newBottom > 0)
   {
-    int number = A.at(iA);
-    bool newNumber = !Contains(inA, number);
-    if (newNumber)
+    newBottom = DiskFits(A, int(newBottom), B.at(iDisk));
+    if (newBottom >= 0)
     {
-      p = iA;
-      inA.push_back(number);
+      nDisks++;
+      iDisk++;
     }
   }
 
-  return p;
-
+  return nDisks;
 }

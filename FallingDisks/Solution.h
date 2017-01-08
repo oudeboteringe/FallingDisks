@@ -3,4 +3,4 @@
 #include <vector>
 using namespace std;
 
-int solution(vector<int> &A);
+int solution(vector<int> &A, vector<int> &B);

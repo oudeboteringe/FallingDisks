@@ -12,21 +12,26 @@ using namespace std;
 int main()
 {
 
-  // Declare the vector:
-  vector<int> intVec;
+  // Declare the vectors:
+  vector<int> intVecA;
+  vector<int> intVecB;
 
-  intVec.push_back(-1);
-  intVec.push_back(3);
-  intVec.push_back(-4);
-  intVec.push_back(5);
-  intVec.push_back(1);
-  intVec.push_back(-6);
-  intVec.push_back(2);
-  intVec.push_back(1);
-  intVec.push_back(1);
-  intVec.push_back(-6);
+  // Populate:
+  intVecA.push_back(5);
+  intVecA.push_back(6);
+  intVecA.push_back(4);
+  intVecA.push_back(3);
+  intVecA.push_back(6);
+  intVecA.push_back(2);
+  intVecA.push_back(3);
 
-  int result = solution(intVec);
+  intVecB.push_back(2);
+  intVecB.push_back(3);
+  intVecB.push_back(5);
+  intVecB.push_back(2);
+  intVecB.push_back(4);
+
+  int result = solution(intVecA, intVecB);
   cout << "Result: " << result << endl;
 
   // End of program
